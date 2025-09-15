@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+void tridiagonalMatrix(int lower[], int diag[], int upper[], int n) {
+    cout << "Tri-diagonal Matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) cout << diag[i] << " ";       
+            else if (i == j+1) cout << lower[j] << " ";
+            else if (j == i+1) cout << upper[i] << " ";  
+            else cout << "0 ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n = 4;
+    int lower[3] = {5, 6, 7};   
+    int diag[4]  = {1, 2, 3, 4}; 
+    int upper[3] = {8, 9, 10}; 
+    tridiagonalMatrix(lower, diag, upper, n);
+    return 0;
+}
