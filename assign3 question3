@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string expr;
+    getline(cin, expr);
+    char stack[100];
+    int top = -1;
+    bool balanced = true;
+    for (char ch : expr) {
+        if (ch == '(' || ch == '{' || ch == '[')
+        {
+            stack[++top] = ch;
+        } 
+        else if (ch == ')' || ch == '}' || ch == ']') 
+        {
+            if (top == -1)
+            {
+                balanced = false;
+                break;
+            }
+            char open = stack[top--];
+            if ((ch == ')' && open != '(') ||(ch == '}' && open != '{') ||(ch == ']' && open != '[')) 
+            {
+                balanced = false;
+                break;
+            }
+        }
+    }
+    if (top != -1) 
+    balanced = false;
+
+    cout << (balanced ? "Balanced" : "Not Balanced") << endl;
+    return 0;
+}
